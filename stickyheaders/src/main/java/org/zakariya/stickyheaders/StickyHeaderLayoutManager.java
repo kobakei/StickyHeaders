@@ -625,6 +625,9 @@ public class StickyHeaderLayoutManager extends RecyclerView.LayoutManager {
 
 		// see: https://blog.stylingandroid.com/scrolling-recyclerview-part-3/
 		View firstVisibleChild = recyclerView.getChildAt(0);
+		if (firstVisibleChild == null) {
+			return;
+		}
 		int itemHeight = getEstimatedItemHeightForSmoothScroll(recyclerView);
 		int currentPosition = recyclerView.getChildAdapterPosition(firstVisibleChild);
 		int distanceInPixels = Math.abs((currentPosition - position) * itemHeight);
